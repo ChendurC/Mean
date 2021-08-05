@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corona Patient Management</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <Form action="coronatable.html" method="post">
+    <Label>Name of the patient</Label>
+    <input type="text" id="name" name="name" min="1" max="50">
+    <br>
+
+    <label>Sex</label>
+    Male: <input type="radio" name="sex" value="m">
+    <br>
+    <label>Location</label>
+    <select id="location">
+        <option value="bng">Bengaluru</option>
+    </select>
+    <br>
+    <Label>Enter your mobile</Label>
+    <input type="text" id="mobile" name="mobile" size="10"><br>
+    <Label>Adhaar no</Label>
+    <input type="text" id="Adhaar no" name="Adhaar no" size=="10"><br>
+    <Label>Pincode</Label>
+    <input type="text" id="Pincode" name="Pincode" size=="6"><br>
+    <Label>Attendee name</Label>
+    <input type="text" id="Attendee name" name="Attendee name">
+    <br>
+    <label for="Appointment Date"> Appointment(Date nd time):</label>
+    <input type="datetime-local" id="Appointment Date" name="Appointment Date">
+    <br>
+    <label for="Spo2">Spo2 (between 0 and 100):</label>
+    <input type="range" id="Spo2" name="Spo2" min="1" max="100">
+    <br>
+    <Label>Type of hospital</Label>
+    <select id="location">
+        <option value="Gov">Government</option>
+        <option value="prv">Private</option>
+        <option value="cc">Care centre</option>
+    </select>
+    <br>
+    <input type="submit" value="Submit">
+</Form>
+
+</body>
+</html>

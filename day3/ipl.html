@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL</title>
+</head>
+<body>
+    <h1>IPL</h1>
+    <input type="text" name="code" id="code" placeholder="Enter Player Code"><br>
+    <input type="text" name="name" id="name" placeholder="Enter Player Name"><br>
+    <input type="text" name="team" id="team" placeholder="Enter Player Team"><br>
+    <input type="text" name="season" id="season" placeholder="Enter Player Season"><br>
+    <input type="text" name="runs" id="runs" placeholder="Enter Player Runs"><br>
+    
+    <button onclick="savePlayer()">Save</button>
+    
+    <table id="result">
+    </table>
+    
+    <script>
+    plylist=[];
+    function player(plycode,name,team,season,runs){
+       this.plycode = plycode
+        this.name = name;
+        this.team = team;
+        this.season=season;
+        this.runs=runs;
+        
+        this.getSeason=function(){
+            return this.season;
+        };
+        this.getRuns=function(){
+            return this.runs;
+        }
+    }
+    
+    function displayPlayer(){
+        var data = '';    
+        for (var i=0;i<plylist.length;i++){
+            data = data + '<tr>';
+            data=data+'<td>'+plylist[i].plycode+'</td>'+'<td>'+plylist[i].name+'</td>';    
+            data = data+'</tr>';
+        }
+        document.getElementById('result').innerHTML=data;
+    }
+        function savePlayer(){
+            code = document.getElementById("code").value;
+            name = document.getElementById("name").value;
+            team = document.getElementById("team").value;
+            season = document.getElementById("season").value;
+            runs = document.getElementById("runs").value;
+            ply = new player(code,name,team,season,runs);
+            plylist.push(ply);
+            console.log('plylist ',plylist);
+            displayPlayer();
+        }
+ 
+        
+    </script>
+</body>
+</html>

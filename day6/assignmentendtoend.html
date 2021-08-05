@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather end to end</title>
+</head>
+ 
+<body>
+    <h1>weather API</h1>
+ 
+    <label>location</label>
+    <input type="text" id="location" name="loc">
+    <button onclick="getweather()">submit</button>
+ 
+    <div class="container" id="weatherDetails">
+ 
+    </div>
+ 
+    <script>
+        weatherdata = [];
+ 
+        function getweather() {
+            var apikey = "65c5dffc58a59d15f549d92238d3d713";
+            var city = document.getElementById('location').value;
+            console.log(city);
+            var url = `https://api.openweathermap.org/data/2.5/weather?q=` + city +
+`&appid=65c5dffc58a59d15f549d92238d3d713`;
+
+
+           
+            console.log(url);
+            fetch(url)
+                .then(response => response.json())
+                .then(json => displayData(json));
+        }
+ 
+        function displayData(jsondata) {
+            weatherdata = jsondata;
+            console.log('displayData::', weatherdata);
+            //document.getElementById('loc').innerHTML = 'location :' + city;
+            var data = `<div>temperature:${weatherdata.main.temp}`
+                     + `</div><div>pressure:${weatherdata.main.pressure}`
+                     + `</div><div>humidity: ${weatherdata.main.humidity}`
+                     + `</div><div>temp_min: ${weatherdata.main.temp_min}`
+                     + `</div><div>temp_max: ${weatherdata.main.temp_max}</div> `;
+            
+
+            document.getElementById("weatherDetails").innerHTML = data;
+
+
+           
+        }
+    </script>
+ 
+</body>
+ 
+</html>

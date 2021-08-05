@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>corona</title>
+</head>
+<body ng-app="CoronaApp" ng-controller="CoronaController"></body>
+    <h1>Corona</h1>
+    <label>State name</label>
+    <input type="text" id="" name="State" ng-model="State" placeholder="Enter state"><br><br>
+    <label>Total cases</label>
+    <input type="text" id="Total" name="Total" ng-model="Total" placeholder="Total cases"><br><br>
+    <label>Active cases</label>
+    <input type="text" id="Active" name="Active" ng-model="Active" placeholder="Active cases"><br><br>
+    <label>Recovered</label>
+    <input type="text" id="Recovered" name="Recovered" ng-model="Recovered" placeholder="Recovered cases"><br><br>
+    <label>Dead</label>
+    <input type="text" id="Dead" name="Dead" ng-model="Dead" placeholder="Deadcases"><br><br>
+
+    <button ng-click="result()">result</button><br>
+    <button ng-click="Clear()">Clear</button><br>
+
+    <br>
+    <table id="result">
+        <tr>
+            <th>State name</th>
+            <th>Total</th>
+            <th>Active</th>
+            <th>Recovered</th>
+            <th>Dead</th>
+        </tr>
+        <tr ng-repeat="obj in coronaUpdates"> 
+            <td>{{obj.State}}</td>
+            <td>{{obj.Total}}</td>
+            <td>{{obj.Active}}</td>
+            <td>{{obj.Recovered}}</td>
+            <td>{{obj.Dead}}</td>
+        </tr>
+
+    </table>
+    <script>
+        var app=angular.module("CoronaApp",[]);
+        app.controller("CoronaController",function($scope){
+            $scope.coronaUpdates=[];
+            console.log($scope.coronaUpdates);
+            $scope.result=function(){
+                list=new coronalist($scope.State,$scope.Total,$scope.Active,$scope.Recovered,$scope.Dead);
+                $scope.coronaUpdates.push(list);
+                console.log($scope.coronaUpdates);
+                $scope.Clear();
+                
+                };
+                $scope.Clear=function(){
+                    $scope.State='';
+                    $scope.Total=0;
+                    $scope.Active=0;
+                    $scope.Recovered=0;
+                    $scope.Dead=0;
+                    
+                
+                };
+                });
+                
+                function coronalist(State,Total,Active,Recovered,Dead){
+                this.State = State;
+                this.Total = Total;
+                this.Active=Active;
+                this.Recovered=Recovered;
+                this.Dead = Dead;
+                };
+            
+
+        
+                
+    
+    </script>
+
+
+
+</body>
+</html> 
